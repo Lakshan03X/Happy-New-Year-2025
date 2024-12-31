@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Year 2025 Countdown</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 10px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(205deg, #1f1c2c, #928dab);
+        color: white;
+        overflow: hidden;
+      }
+
+      .countdown-container {
+        text-align: center;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 40px 60px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        animation: scaleUp 1s ease-in-out;
+      }
+
+      @keyframes scaleUp {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      #countdown {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+      }
+
+      .time-box {
+        margin: 0 15px;
+        padding: 30px 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        text-align: center;
+        width: 120px;
+        font-size: 2.5rem;
+        font-weight: bold;
+        transition: transform 0.3s ease;
+      }
+
+      .time-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .time-box small {
+        display: block;
+        margin-top: 10px;
+        font-size: 1.2rem;
+        color: #ddd;
+      }
+
+      .hidden-message {
+        display: none;
+        text-align: center;
+        margin-left: 15px;
+        margin-top: 40px;
+        max-width: 500px;
+      }
+
+      .hidden-message.show {
+        display: block;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 15px 30px;
+        background: #ff7e5f;
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border-radius: 30px;
+        box-shadow: 0 8px 15px rgba(255, 126, 95, 0.5);
+        transition: background 0.3s ease, transform 0.2s ease;
+      }
+
+      button:hover {
+        background: #feb47b;
+        transform: translateY(-5px);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .countdown-container {
+          padding: 30px 40px;
+          width: 90%;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .time-box {
+          width: 80px;
+          font-size: 2rem;
+          padding: 20px 10px;
+        }
+
+        .time-box small {
+          font-size: 1rem;
+        }
+
+        button {
+          padding: 12px 25px;
+          font-size: 1rem;
+        }
+
+        .hidden-message {
+          margin: 20px;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .countdown-container {
+          margin-top: 200px;
+          padding: 20px 30px;
+          width: 80%;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        .time-box {
+          width: 70px;
+          font-size: 1.8rem;
+          margin: 0 5px;
+          padding: 15px 8px;
+        }
+
+        .time-box small {
+          font-size: 0.9rem;
+        }
+
+        button {
+          padding: 10px 20px;
+          font-size: 0.9rem;
+        }
+
+        body {
+          display: block;
+        }
+
+        .hidden-message h2 {
+          font-size: 1.5rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="countdown-container">
+      <h1>🎉 New Year 2025 is Coming! 🎉</h1>
+      <div id="countdown">
+        <div class="time-box"><span id="days">00</span><small>Days</small></div>
+        <div class="time-box">
+          <span id="hours">00</span><small>Hours</small>
+        </div>
+        <div class="time-box">
+          <span id="minutes">00</span><small>Minutes</small>
+        </div>
+        <div class="time-box">
+          <span id="seconds">00</span><small>Seconds</small>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="hidden-message" id="message">
+      <h2>🎊 Happy New Year 2025! 🎊</h2>
+      <p>
+        As we welcome this fresh start, may your days be filled with joy and
+        laughter 😊, your goals met with strength and determination 💪, and your
+        heart warmed by love and peace ❤️. ✨ May this year bring exciting
+        opportunities 🚀, unforgettable memories 🎊, and the courage to chase
+        your dreams 🌈. Here's to new adventures, growth, and happiness in the
+        year ahead! 🥂🎆
+      </p>
+    </div>
+
+    <script>
+      const countdown = document.getElementById("countdown");
+      const message = document.getElementById("message");
+
+      const newYearTime = new Date("January 1, 2025 00:00:00").getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const gap = newYearTime - now;
+
+        const second = 1000;
+        const minute = second * 60;
+        const hour = minute * 60;
+        const day = hour * 24;
+
+        const days = Math.floor(gap / day);
+        const hours = Math.floor((gap % day) / hour);
+        const minutes = Math.floor((gap % hour) / minute);
+        const seconds = Math.floor((gap % minute) / second);
+
+        document.getElementById("days").innerText = days;
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+        document.getElementById("seconds").innerText = seconds;
+
+        if (gap < 0) {
+          countdown.style.display = "none";
+          message.classList.add("show");
+          launchConfetti();
+        }
+      }
+
+      function launchConfetti() {
+        confetti({
+          particleCount: 300,
+          spread: 200,
+          origin: { y: 0.6 },
+        });
+      }
+
+      setInterval(updateCountdown, 1000);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0"></script>
+  </body>
+</html>
